@@ -18,17 +18,20 @@ I've made this repository open-source and I'm open for collaborations. If you're
 
 1. **Fork the repository** - Click the `Fork` button in the top right corner of the repository page.
 
-2. **Clone the repository** - Open your terminal, navigate to your preferred directory and use the command: bash``` git clone https://github.com/Mirza-Mukkaram-Baig/projects.git```
+2. **Clone the repository** - Open your terminal, navigate to your preferred directory and use the command:
+   ```bash
+    git clone https://github.com/Mirza-Mukkaram-Baig/projects.git
+   ```
 
-3. **Create a new branch** - Create a new branch for your changes using the command: `git checkout -b branch-name`
+4. **Create a new branch** - Create a new branch for your changes using the command: `git checkout -b branch-name`
 
-4. **Make your changes** - Navigate to the files and make your changes or additions.
+5. **Make your changes** - Navigate to the files and make your changes or additions.
 
-5. **Commit your changes** - Use the command: `git add .` to stage your changes, then `git commit -m "your-commit-message"`
+6. **Commit your changes** - Use the command: `git add .` to stage your changes, then `git commit -m "your-commit-message"`
 
-6. **Push your changes** - Use the command: `git push origin branch-name` to push your changes.
+7. **Push your changes** - Use the command: `git push origin branch-name` to push your changes.
 
-7. **Submit a Pull Request** - Go back to your repository on GitHub, you'll see a `Compare & pull request` button. Click on that button and submit the pull request with a brief description of your changes.
+8. **Submit a Pull Request** - Go back to your repository on GitHub, you'll see a `Compare & pull request` button. Click on that button and submit the pull request with a brief description of your changes.
 
 ## License
 
