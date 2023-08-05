@@ -10,17 +10,17 @@ This project demonstrates how to securely manage passwords and sensitive data in
 Please remember, this project is for demonstration purposes and does not consider other important aspects of security such as secure handling of encryption keys and secure storage of hashed passwords.
 
 ## Requirements
-The project requires Python 3.6 or later. The following libraries are also required:
+The project requires `Python 3.6` or later. The following libraries are also required:
 
-- bcrypt
-- json
-- getpass
-- cryptography.fernet
-- cryptography.hazmat.primitives
-- cryptography.hazmat.primitives.kdf.pbkdf2
-- cryptography.hazmat.primitives.asymmetric
-- base64
-- os
+- `bcrypt`
+- `json`
+- `getpass`
+- `cryptography.fernet`
+- `cryptography.hazmat.primitives`
+- `cryptography.hazmat.primitives.kdf.pbkdf2`
+- `cryptography.hazmat.primitives.asymmetric`
+- `base64`
+- `os`
 
 You can install these libraries using pip:
 
