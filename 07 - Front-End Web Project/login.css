@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+body{
+    margin: 0;
+    padding: 0;
+    background: url(kakashi.jpg);
+    background-size: cover;
+    font-family: "Montserrat", sans-serif;
+    
+}
+#login .loginbox{
+    width: 320px;
+    height: 420px;
+    background-color: transparent;
+    color: white;
+    top: 10%;
+    left: 35%;
+    position: absolute;
+    text-align: center;
+    box-sizing: border-box;
+}
+#login .loginbox a{
+    text-decoration: none;
+}
+#login .loginbox img{
+    height: auto;
+    width: 125px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+#login .loginbox input{
+    width: 100%;
+    margin-bottom: 20px; 
+}
+#login .loginbox input[type="text"], input[type="password"]{
+    border: none;
+    border-bottom: 1px solid transparent;
+    color:#FFC107;
+    border: transparent;
+    background: transparent;
+    outline: none;
+    height: 20px;
+}
+.cta{
+    display: inline-block;
+    padding: 10px 30px;
+    color: black;
+    background-color: transparent;
+    border: 2px solid #FFC107;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin-top: 30px;
+    transition: 0.3s ease;
+    transition-property: background-color, color;
+}
+.cta:hover{
+    color: white;
+    background-color: #FFC107;
+}
