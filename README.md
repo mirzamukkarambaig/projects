@@ -18,7 +18,7 @@ I've made this repository open-source and I'm open for collaborations. If you're
 
 1. **Fork the repository** - Click the `Fork` button in the top right corner of the repository page.
 
-2. **Clone the repository** - Open your terminal, navigate to your preferred directory and use the command: `git clone "url-you-copied"`
+2. **Clone the repository** - Open your terminal, navigate to your preferred directory and use the command: ```bash git clone https://github.com/Mirza-Mukkaram-Baig/projects.git```
 
 3. **Create a new branch** - Create a new branch for your changes using the command: `git checkout -b branch-name`
 
