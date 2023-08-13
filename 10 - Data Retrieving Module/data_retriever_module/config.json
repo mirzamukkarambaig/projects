@@ -1,0 +1,9 @@
+{
+    "adx_connection_string" : {
+        "cluster" : "",
+        "database" : "",
+        "client_id" : "",
+        "client_secret" : "",
+        "authority_id" : ""
+    }
+}
