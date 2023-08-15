@@ -11,6 +11,8 @@ import time
 
 # Set up logging
 logging.basicConfig(filename='my_log_file.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+PARQUET_PATH = "data.parquet"
+CONFIG_PATH = "config.json"
 
 class BaseQuery(ABC):
     def __init__(self, day_str, next_day_str):
@@ -55,7 +57,7 @@ class ADXDataRetriever:
 
         return config
 
-    def __init__(self, config_path: str = "../config.json", query_classes: List[BaseQuery] = [], days: List[datetime] = []):
+    def __init__(self, config_path: str = CONFIG_PATH, query_classes: List[BaseQuery] = [], days: List[datetime] = []):
         """
         Constructs all the necessary attributes for the ADXDataRetriever object.
         """
@@ -68,8 +70,6 @@ class ADXDataRetriever:
         self.query_classes = query_classes
         self.days = days
         self.client = None  # Connection will be established later
-
-        
 
     def create_connection(self):
         """
@@ -173,24 +173,20 @@ class ADXDataRetriever:
 if __name__ = "__main__":
     
     # 1. Create a list of days
-    start_date = datetime(2022, 10, 1)
-    end_date = datetime(2022, 11, 1)
+    start_date = datetime(2022, 1, 1)
+    end_date = datetime(2022, 2, 1)
     days = [start_date + timedelta(days=x) for x in range((end_date-start_date).days)]
     
     # 2. Create a list of query classes
-    query_classes = [Query1, Query2]
-    
-    config_path = "E:\OneDrive - Octopus Digital\Projects\Pakistan Tobacco Company\classes\data_retriever_module\config.json" 
+    query_classes = [Query1, Query2] 
     
     # 3. Create an instance of ADXDataRetriever
-    data_retriever = ADXDataRetriever(config_path=config_path, query_classes=query_classes, days=days)
+    data_retriever = ADXDataRetriever(config_path=CONFIG_PATH, query_classes=query_classes, days=days)
     
     # 4. Establish a connection
     data_retriever.create_connection()
     
-    parquet_path = "E:\OneDrive - Octopus Digital\Projects\Pakistan Tobacco Company\classes\data_retriever_module\october_2022.parquet"
-    
     # 5. Retrieve the data and save it to a Parquet file
     start_time = time.time()
-    data_retriever.save_to_parquet_file(parquet_path)
+    data_retriever.save_to_parquet_file(PARQUET_PATH)
     print(f"Overall Time: {time.time() - start_time} seconds")
