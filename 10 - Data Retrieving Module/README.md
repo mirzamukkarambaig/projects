@@ -6,10 +6,15 @@ This project includes a Python class, ADXDataRetriever, for retrieving data from
 
 This project depends on the following Python packages:
 
-- pandas==1.3.1
-- azure-kusto-data==2.10.0
-
-The exact versions of these dependencies that are known to be compatible are listed in the requirements.txt file.
+- `datetime`
+- `typing`
+- `concurrent.futures`
+- `pandas==1.3.1`
+- `json`
+- `logging`
+- `abc`
+- `time`
+- `azure.kusto.data==2.10.0`
 
 ## Installation
 You can install the dependencies with pip:
@@ -18,64 +23,85 @@ You can install the dependencies with pip:
 pip install -r requirements.txt
 ```
 
+
 ## UML
+
 ```plaintext
++---------------------------------+
+|           BaseQuery             |
++---------------------------------+
+| -day_str: str                   |
+| -next_day_str: str              |
++---------------------------------+
+| +get_query(): str               |
++---------------------------------+
+
++---------------------------------+
+|            Query1               |
++---------------------------------+
+| Inherits from BaseQuery         |
++---------------------------------+
+| +get_query(): str               |
++---------------------------------+
+
++---------------------------------+
+|            Query2               |
++---------------------------------+
+| Inherits from BaseQuery         |
++---------------------------------+
+| +get_query(): str               |
++---------------------------------+
+
+... (more query classes) ...
+
 +---------------------------------------+
 |          ADXDataRetriever             |
 +---------------------------------------+
-| -cluster: str                         |
-| -client_id: str                       |
-| -client_secret: str                   |
-| -authority_id: str                    |
-| -database: str                        |
-| -queries: List[str]                   |
+| -config: dict                         |
+| -query_classes: List[BaseQuery]       |
 | -days: List[datetime]                 |
 | -client: KustoClient                  |
 +---------------------------------------+
 | +__init__(...)                        |
+| +read_configuration_file(): dict      |
 | +create_connection()                  |
 | -_update_queries(day: datetime)       |
-| +execute_query(query: str): DataFrame |
+| +execute_query(query: BaseQuery)      |
 | +retrieve_data(): DataFrame           |
+| +save_to_parquet_file(...)            |
 +---------------------------------------+
 ```
 
 ## Usage
-You can use the ADXDataRetriever class to retrieve data from ADX like so:
+
+To retrieve data from Azure Data Explorer using the `ADXDataRetriever` class, follow these steps:
 
 ```python
-from ADXDataRetriever import ADXDataRetriever
-from datetime import datetime
+from datetime import datetime, timedelta
+from ADXDataRetriever import ADXDataRetriever, Query1, Query2
+import time
 
-# Initialize the ADXDataRetriever
-adx = ADXDataRetriever(
-    cluster="Your cluster",
-    client_id="Your client id",
-    client_secret="Your client secret",
-    authority_id="Your authority id",
-    database="Your database",
-    queries=[
-        "Your Query1 using {day_str} and {next_day_str}",
-        "Your Query2 using {day_str} and {next_day_str}"
-    ],
-    days=[datetime(2023, 1, 1)]  # add the days for which you want to retrieve data
-)
+# 1. Define the days for which you want to retrieve data
+start_date = datetime(2022, 1, 1)
+end_date = datetime(2022, 2, 1)
+days = [start_date + timedelta(days=x) for x in range((end_date-start_date).days)]
 
-# Create connection to the ADX service
-adx.create_connection()
+# 2. Define the list of query classes
+query_classes = [Query1, Query2]
 
-# Retrieve data for the specified days
-df = adx.retrieve_data()
+# 3. Initialize the ADXDataRetriever
+data_retriever = ADXDataRetriever(config_path="config.json", query_classes=query_classes, days=days)
 
-# df now contains the data retrieved from ADX
+# 4. Establish a connection to the ADX service
+data_retriever.create_connection()
+
+# 5. Retrieve the data and save it to a Parquet file
+start_time = time.time()
+data_retriever.save_to_parquet_file("data.parquet")
+print(f"Overall Time: {time.time() - start_time} seconds")
 ```
 
-You just need to replace "Your cluster", "Your client id", "Your client secret", "Your authority id", "Your database", and the queries with your actual values.
-
-The retrieve_data method retrieves data for the specified days by executing all queries in parallel and concatenating the results. Each query should be a string that includes {day_str} and {next_day_str} as placeholders for the start and end of the day, respectively. These placeholders will be replaced with the actual times when the method is called.
-
+Make sure to customize the `start_date`, `end_date`, and any other necessary configurations before executing the script.
 ## License
 
 This project is licensed under the terms of the MIT license.
-
-Please customize the above template as necessary to suit your project. For instance, you may want to add sections on contributing, testing, and so on, or you may want to provide more detailed usage examples. Be sure to replace the placeholder values in the "Usage" section with your actual values.
