@@ -17,7 +17,7 @@ def git_push(repo_path='.'):
         # Push to GitHub
         try:
             origin = repo.remote(name='origin')
-            origin.push()
+            origin.push(refspec='HEAD:main')  # Push to the main branch
             print("Changes pushed to GitHub!")
         except git.exc.GitCommandError as error:
             print(f"Error pushing to GitHub: {error}")
