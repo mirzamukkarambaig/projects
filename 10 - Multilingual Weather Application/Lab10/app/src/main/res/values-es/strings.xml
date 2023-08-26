@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Laboratorio 10</string>
+    <string name="longitude">Longitud</string>
+    <string name="latitude">Latitud</string>
+    <string name="altitude">Altitud</string>
+    <string name="speed">Velocidad</string>
+    <string name="temperature">Temperatura</string>
+    <string name="feelsLike">Sensación térmica</string>
+    <string name="maxTemp">Temperatura máxima</string>
+    <string name="minTemp">Temperatura mínima</string>
+    <string name="humidity">Humedad</string>
+    <string name="visibility">Visibilidad</string>
+    <string name="windSpeed">Velocidad del viento</string>
+    <string name="windDirection">Dirección del viento</string>
+    <string name="sunrise">Salida del sol</string>
+    <string name="sunset">Puesta de sol</string>
+</resources>
