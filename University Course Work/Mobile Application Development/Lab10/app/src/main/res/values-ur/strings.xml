@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">تجربہ 10</string>
+    <string name="longitude">طول</string>
+    <string name="latitude">عرض</string>
+    <string name="altitude">اونچائی</string>
+    <string name="speed">رفتار</string>
+    <string name="temperature">درجہ حرارت</string>
+    <string name="feelsLike">جیسے لگتا ہے</string>
+    <string name="maxTemp">زیادہ سے زیادہ درجہ حرارت</string>
+    <string name="minTemp">کم سے کم درجہ حرارت</string>
+    <string name="humidity">نمی</string>
+    <string name="visibility">دریافت پذیری</string>
+    <string name="windSpeed">ہوا کی رفتار</string>
+    <string name="windDirection">ہوا کی سمت</string>
+    <string name="sunrise">طلوع آفتاب</string>
+    <string name="sunset">غروب آفتاب</string>
+</resources>
