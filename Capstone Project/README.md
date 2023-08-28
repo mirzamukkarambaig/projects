@@ -1,4 +1,12 @@
 # Roadmap for Malware Classification Project
+
+---
+
+## Update
+The project is currently in its initial stages, with current focus on the Research and Planning phase. More specifically, efforts are concentrated on Section 1.1, which pertains to Background Research.
+
+---
+
 ### Phase 1: Research & Planning
 
 #### 1.1 Background Research
