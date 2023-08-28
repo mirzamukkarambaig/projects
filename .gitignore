@@ -1,2 +1,5 @@
 # Ignore the virtual environment directory
 noiseReduction/
+
+# Ignore the folders
+Capstone Project/
