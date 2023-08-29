@@ -12,7 +12,7 @@ This is a simple Python script to generate a random password. The password inclu
 
 1. Clone this repository or download the Python script.
 2. Open a terminal and navigate to the folder containing the Python script.
-3. Run the Python script using the command `python <script_name>.py`.
+3. Run the Python script using the command `python main.py`.
 4. Follow the on-screen instructions to generate your password.
 
 ## Code Structure
