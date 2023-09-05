@@ -9,7 +9,7 @@ public class Main {  // Note: Renamed class to 'Main' to follow Java naming conv
         int n = array.length;
         
         // Initialize variables to store the maximum subarray sum and the current subarray sum.
-        int maximum_sum = 0;
+        int maximum_sum = Integer.MIN_VALUE;
         int current_sum = 0;
     
         // Iterate over the array using indices.
@@ -35,7 +35,7 @@ public class Main {  // Note: Renamed class to 'Main' to follow Java naming conv
 
         // Note: You missed declaring 'maxSum' and 'currentSum' for this approach. 
         // We'll include them here for completeness.
-        int maxSum = 0;
+        int maxSum = Integer.MIN_VALUE;
         int currentSum = 0;
 
         // Use enhanced for-loop to iterate over each element in the array.

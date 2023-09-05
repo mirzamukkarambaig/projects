@@ -9,7 +9,7 @@ int main()
     int n = sizeof(array) / sizeof(int);
 
     // Initialize variables to keep track of the maximum subarray sum and the current subarray sum
-    int maximum_sum = 0;
+    int maximum_sum = INT_MIN;
     int current_sum = 0;
 
     // Iterate through each element in the array
