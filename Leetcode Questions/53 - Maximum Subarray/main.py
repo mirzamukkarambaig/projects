@@ -4,7 +4,7 @@ my_list = [2, 1, -3, 4, -1, 2, 1, -5, 4]
 # Approach 1: Using if-statements for comparison
 # Initialize maximum_sum to store the maximum subarray sum
 # Initialize current_sum to store the sum of the current subarray
-maximum_sum = 0
+maximum_sum = float('-inf')
 current_sum = 0
 
 # Loop through each element in the list
@@ -26,7 +26,7 @@ print(maximum_sum)
 # Approach 2: Using Python's max() function for comparison
 # Initialize max_sum to store the maximum subarray sum
 # Initialize current_sum to store the sum of the current subarray
-max_sum = 0
+max_sum = float('-inf')
 current_sum = 0
 
 # Loop through each element in the list
