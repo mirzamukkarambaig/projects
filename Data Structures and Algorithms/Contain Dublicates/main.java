@@ -1,7 +1,7 @@
 import java.util.HashSet;
 import java.util.Set;
 
-public class Main {
+public class main {
     public static void main(String[] args) {
         int[] myArray = {1, 2, 3};
         Set<Integer> mySet = new HashSet<>();  // Changed type to Integer
