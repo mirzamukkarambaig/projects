@@ -1,16 +1,13 @@
-my_list = [7, 3, 2, 4, 9, 12, 56]
-n = 7
-m = 3
-
+my_list = [12, 4, 7, 9, 2, 23, 25, 41, 30, 40, 28, 42, 30, 44, 48, 43, 50]
+n = len(my_list)
+m = 7
 my_list.sort()
 
 minimum_difference = float("inf")
-for i in range(len(my_list) - m + 1):
-    current_difference = my_list[i + m] - my_list[i]
-    if (current_difference < minimum_difference):
-        minimum_difference = current_difference
+
+for i in range(n - m + 1):
+    current_difference = my_list[i + m - 1] - my_list[i]
+    minimum_difference = min(current_difference, minimum_difference)
  
 
-print(f"difference: {current_difference}")
-
-    
+print(f"Minimum Difference: {minimum_difference}")
