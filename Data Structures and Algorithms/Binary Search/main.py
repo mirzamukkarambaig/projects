@@ -3,7 +3,7 @@ def binary_search(list, key):
     end = len(list) - 1
 
     while(start <= end):
-        mid = int((start + end) / 2)
+        mid = (start + end) // 2
 
         if(list[mid] == key):
             return mid
