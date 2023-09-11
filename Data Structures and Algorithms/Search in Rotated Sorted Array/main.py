@@ -1,28 +1,30 @@
-# element_to_find = 0
+def search_in_rotated_array(arr, key, start, end):
+    if start > end:
+        return -1
 
-# if element_to_find in my_list:
-#     index = my_list.index(element_to_find)
-#     print(f"The element {element_to_find} is at index {index}.")
-# else:
-#     print(f"The element {element_to_find} is not in the list.")
+    mid = (start + end) // 2
 
-def binary_search(list, key):
-    start = 0
-    end = len(list) - 1
+    if arr[mid] == key:
+        return mid
 
-    while(start <= end):
-        mid = int((start + end) / 2)
-
-        if(list[mid] == key):
-            return mid
-        elif(list[mid]>key):
-            end = mid - 1
+    # Check if the left half is normally sorted
+    if arr[start] <= arr[mid]:
+        if key >= arr[start] and key <= arr[mid]:
+            return search_in_rotated_array(arr, key, start, mid - 1)
         else:
-            start = mid + 1
+            return search_in_rotated_array(arr, key, mid + 1, end)
 
-    return -1
+    # If the left half is not normally sorted, the right half must be
+    if key >= arr[mid] and key <= arr[end]:
+        return search_in_rotated_array(arr, key, mid + 1, end)
+    else:
+        return search_in_rotated_array(arr, key, start, mid - 1)
 
 
-my_list = [0,1,2,4,5,6,7]
-result = binary_search(my_list, 2)
+def search_rotated(arr, key):
+    return search_in_rotated_array(arr, key, 0, len(arr) - 1)
+
+
+my_list = [4, 5, 6, 7, 0, 1, 2]
+result = search_rotated(my_list, 2)
 print(result)
