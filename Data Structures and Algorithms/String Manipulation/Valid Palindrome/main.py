@@ -1,39 +1,35 @@
 import re
 
-# Approach 2
+# Approach 1
 def valid_palindrome(s: str) -> bool:
-    # Remove all special characters, punctuation, and spaces
-    modified_string = re.sub(r'[^\w]', '', s)
+    # Remove all special characters, punctuation, and spaces, and underscores
+    s = re.sub(r'[^a-zA-Z0-9]', '', s)
 
     # Convert the whole string to lowercase
-    modified_string = modified_string.lower()
-
-    # Initialize palindrome to True
-    palindrome = True
+    s = s.lower()
 
     # Length of the modified string
-    n = len(modified_string)
+    n = len(s)
 
     # Check if the string is a palindrome
     for i in range(n // 2):
-        if modified_string[i] != modified_string[n - i - 1]:
-            palindrome = False
-            break
+        if s[i] != s[n - i - 1]:
+            return False
 
-    return palindrome
+    return True
 
 # Approach 2
 # Optimized code for checking if a string is a valid palindrome
 def valid_palindrome_optimized(s: str) -> bool:
-    # Remove all special characters, punctuation, and spaces
-    modified_string = re.sub(r'[^\w]', '', s)
+    # Remove all special characters, punctuation, and spaces, and underscores
+    s = re.sub(r'[^a-zA-Z0-9]', '', s)
 
     # Convert the whole string to lowercase
-    modified_string = modified_string.lower()
+    s = s.lower()
 
     # Check if the string is a palindrome
-    return modified_string == modified_string[::-1]
+    return s == s[::-1]
 
-s = "race a car"
+s = "ab_a"
 results = valid_palindrome_optimized(s)
 print(results)
