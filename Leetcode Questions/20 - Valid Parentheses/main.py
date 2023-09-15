@@ -1,6 +1,6 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        if len(s) % 2 != 0:
+        if len(s) % 2 != 0: # parentheses must be in pairs
             return False
     
         stack = []
@@ -10,7 +10,7 @@ class Solution:
             if char in mappings.values():  
                 stack.append(char)
             elif char in mappings.keys():  
-                if not stack or mappings[char] != stack.pop():
+                if (not stack) or (mappings[char] != stack.pop()):
                     return False
             else:
                 return False  
