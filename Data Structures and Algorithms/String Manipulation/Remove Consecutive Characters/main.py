@@ -11,5 +11,16 @@ def remove(s: str) -> str:
 
     return s
 
+def remove_optimized(s: str) -> str:
+    result = []
+    i = 0
+    while i < len(s):
+        if i < len(s) - 1 and s[i] == s[i + 1]:
+            i += 1  # Skip the next character
+        else:
+            result.append(s[i])  # Add the current character to the result
+        i += 1  
+    return ''.join(result)  # Convert the list back to a string
+
 print(remove("aabbcc"))  
-print(remove("aaabbbccc"))  
+print(remove_optimized("aaabbbccc"))  
