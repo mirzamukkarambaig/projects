@@ -18,6 +18,11 @@ notes_collection = db.get_collection("notesApp")
 
 @app.get("/", response_class=HTMLResponse)
 async def read_item(request: Request):
-    notes = notes_collection.find_one({})
-    print(notes)
-    return templates.TemplateResponse("index.html", {"request": request, "notes": notes})
+    notes = notes_collection.find({})
+    new_notes = []
+    for note in notes:
+        new_notes.append({
+            "id": note["_id"],
+            "note": note["note"]
+        })
+    return templates.TemplateResponse("index.html", {"request": request, "new_notes": new_notes})
