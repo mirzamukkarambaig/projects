@@ -1,9 +1,8 @@
 from fastapi import APIRouter, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-from models.note import NoteBase
+
 from config.db import notes_collection
-from schemas.note import note_entity, note_entities
 
 note = APIRouter()
 templates = Jinja2Templates(directory="templates")
@@ -30,5 +29,3 @@ async def create_item(request: Request, title: str = Form(...), description: str
     new_entry = {"title": title, "description": description}
     result = notes_collection.insert_one(new_entry)
     return templates.TemplateResponse("index.html", {"request": request, "result": result})
-
-
