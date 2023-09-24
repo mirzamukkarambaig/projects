@@ -13,4 +13,4 @@ Given that an `array of intergers` of `n` elements. Each element represent the `
 
 ## Solution
 
-The solution is to sort the array and then find the minimum difference between the `m` consecutive elements in the array.
+The solution is to sort the array and then find the minimum difference between the `i` (first) and `m` (last) element of a sliding window in the array.
