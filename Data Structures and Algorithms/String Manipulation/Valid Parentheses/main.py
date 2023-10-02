@@ -1,5 +1,5 @@
 def valid_parentheses(s: str) -> bool:
-    if len(s) % 2 != 0:
+    if len(s) % 2 != 0: # Parentheses must be in pairs thus the lenght must be even
         return False
     
     stack = []
