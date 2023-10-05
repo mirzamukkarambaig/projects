@@ -99,3 +99,26 @@ void Linkedlist<T>::treaversal() const {
 
     std::cout << "List Size: " << this->listSize << std::endl;
 }
+
+template<class T>
+void Linkedlist<T>::getHead() const
+{
+    std::cout << "Head: " << this->head->getData() << std::endl;
+}
+
+template<class T>
+void Linkedlist<T>::getTail() const
+{
+    std::cout << "Tail: " << this->tail->getData() << std::endl;
+}
+
+template<class T>
+void Linkedlist<T>::getMedian() const
+{
+    Node<T>* temp = head;
+    for (int i = 0; i < (listSize / 2); i++) {
+        temp = temp->getNext();
+    }
+
+    std::cout << "Median: " << temp->getData() << std::endl;
+}

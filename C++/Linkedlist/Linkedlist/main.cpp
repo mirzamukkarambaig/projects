@@ -9,6 +9,12 @@ int main() {
 	list.pushBack(4);
 	list.pushBack(5);
 	list.pushBack(6);
+	list.pushBack(7);
+	list.pushBack(8);
+
+	list.getHead();
+	list.getTail();
+	list.getMedian();
 
 	list.treaversal();
 

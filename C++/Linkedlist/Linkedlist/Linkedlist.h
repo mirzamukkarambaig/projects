@@ -22,22 +22,18 @@ public:
 
 	void treaversal() const;
 
+	void getHead() const;
+	void getTail() const;
+	void getMedian() const;
+
 };
 
 
-//element access
-//- front
-//- back
-//- middle
-//
+
 //search and modification
 //- contains
 //- remove
 //- insertAt
 //- RemoveFrom
-//
-//Traversal
-//
-//Destructor
 //
 //Reverse
