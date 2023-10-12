@@ -1,4 +1,5 @@
 import requests
+import pandas as pd
 
 lat = "31.5204"
 lon = "74.3587"
@@ -10,3 +11,12 @@ response = requests.get(url)
 data = response.json()
 
 print(data)
+
+# Extract components from the data
+components = data['list'][0]['components']
+
+# Convert the dictionary to a DataFrame
+df = pd.DataFrame(list(components.items()), columns=['Component', 'Concentration'])
+
+print(df)
+
