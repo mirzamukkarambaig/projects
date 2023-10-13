@@ -15,6 +15,17 @@ CREATE TABLE components(
     units VARCHAR(5) NOT NULL
 );
 
+INSERT INTO components (component_id, description, units)
+VALUES
+("co", "Carbon Monoxide", "μg/m3"),
+("no", "Nitrogen Monoxide", "μg/m3"),
+("no2", "Nitroge Dioxide", "μg/m3"),
+("o3", "Ozone", "μg/m3"),
+("so2", "Sulphur Dioxide", "μg/m3"),
+("pm2_5", "Fine Particle Matter", "μg/m3"),
+("pm10", "Coarse Particle Matter", "μg/m3"),
+("nh3", "Ammonia", "μg/m3");
+
 CREATE TABLE air_quality(
     aqi_uuid CHAR(36) PRIMARY KEY,  
     location_code VARCHAR(10) NOT NULL,
@@ -33,3 +44,6 @@ CREATE TABLE concentrations(
     FOREIGN KEY (component_id) REFERENCES components(component_id),  -- Added foreign key reference
     UNIQUE (aqi_id, component_id)  -- Ensures one value per component for each AQI
 );
+
+SELECT * FROM air_quality;
+
