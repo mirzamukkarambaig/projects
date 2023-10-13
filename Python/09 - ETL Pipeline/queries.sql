@@ -1,38 +1,35 @@
-CREATE DATABASE IF NOT EXISTS air_pollution;
+CREATE DATABASE AirQualityDB;
 
-USE air_pollution;
+USE AirQualityDB;
+
+CREATE TABLE locations(
+    location_code VARCHAR(10) PRIMARY KEY,  -- Renamed from location_id for consistency
+    location_name VARCHAR(20) NOT NULL,
+    longitude FLOAT NOT NULL,
+    latitude FLOAT NOT NULL
+);
 
 CREATE TABLE components(
-	id varchar(10),
-    name varchar(50),
-    units varchar(5),
-    PRIMARY KEY (id)
+    component_id VARCHAR(10) PRIMARY KEY,
+    description VARCHAR(50) NOT NULL,
+    units VARCHAR(5) NOT NULL
 );
 
-INSERT INTO components(id, name, units)
-VALUES
-("co", "Carbon Monoxide", "μg/m3"),
-("no", "Nitrogen Monoxide", "μg/m3"),
-("no2", "Nitrogen Dioxide", "μg/m3"),
-("o3", "Ozone", "μg/m3"),
-("so2", "Sodium Dioxide", "μg/m3"),
-("pm2_5", "Fine Particle Matter", "μg/m3"),
-("pm10", "Coarse Particle Matter", "μg/m3"),
-("nh3", "Ammonia", "μg/m3");
-
-CREATE TABLE concentration(
-    concentration_id INT AUTO_INCREMENT,
-    component_id varchar(10),
-    value FLOAT,
-    measurement_date DATE DEFAULT (CURRENT_DATE),
-    PRIMARY KEY (concentration_id),
-    FOREIGN KEY (component_id) REFERENCES components(id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
+CREATE TABLE air_quality(
+    aqi_uuid CHAR(36) PRIMARY KEY,  
+    location_code VARCHAR(10) NOT NULL,
+    aqi_value INT NOT NULL,
+    measured_at DATETIME NOT NULL,  
+    FOREIGN KEY (location_code) REFERENCES locations(location_code),  -- Added foreign key reference
+    UNIQUE (location_code, measured_at)
 );
 
-SELECT * FROM concentration;
-
-
-
-
+CREATE TABLE concentrations(
+    concentration_id CHAR(36) PRIMARY KEY,
+    aqi_id CHAR(36) NOT NULL,
+    component_id VARCHAR(10) NOT NULL,  -- Renamed from component for consistency
+    value FLOAT NOT NULL,
+    FOREIGN KEY (aqi_id) REFERENCES air_quality(aqi_uuid),
+    FOREIGN KEY (component_id) REFERENCES components(component_id),  -- Added foreign key reference
+    UNIQUE (aqi_id, component_id)  -- Ensures one value per component for each AQI
+);
