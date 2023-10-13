@@ -1,6 +1,6 @@
-CREATE DATABASE air_polution;
+CREATE DATABASE IF NOT EXISTS air_pollution;
 
-USE air_polution;
+USE air_pollution;
 
 CREATE TABLE components(
 	id varchar(10),
@@ -24,14 +24,14 @@ CREATE TABLE concentration(
     concentration_id INT AUTO_INCREMENT,
     component_id varchar(10),
     value FLOAT,
-    measurement_date DATE,
+    measurement_date DATE DEFAULT (CURRENT_DATE),
     PRIMARY KEY (concentration_id),
     FOREIGN KEY (component_id) REFERENCES components(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
 
-SELECT * FROM concentration
+SELECT * FROM concentration;
 
 
 
