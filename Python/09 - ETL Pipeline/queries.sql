@@ -47,3 +47,21 @@ CREATE TABLE concentrations(
 
 SELECT * FROM air_quality;
 
+ALTER TABLE air_quality
+ADD CONSTRAINT fk_location_code
+FOREIGN KEY (location_code) REFERENCES locations(location_code)
+ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+ALTER TABLE concentrations
+ADD CONSTRAINT fk_aqi_id
+FOREIGN KEY (aqi_id) REFERENCES air_quality(aqi_uuid)
+ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+ALTER TABLE concentrations
+ADD CONSTRAINT fk_component_id
+FOREIGN KEY (component_id) REFERENCES components(component_id)
+ON DELETE CASCADE ON UPDATE CASCADE;
+
+
