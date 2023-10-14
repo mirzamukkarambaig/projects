@@ -64,4 +64,6 @@ ADD CONSTRAINT fk_component_id
 FOREIGN KEY (component_id) REFERENCES components(component_id)
 ON DELETE CASCADE ON UPDATE CASCADE;
 
+SELECT * FROM locations;
+
 
