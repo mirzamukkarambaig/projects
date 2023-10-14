@@ -26,13 +26,24 @@ def main():
 
     timestamp = datetime.utcfromtimestamp(data['list'][0]['dt']).strftime('%Y-%m-%d %H:%M:%S')
 
+    # Insert location data
     query = "INSERT INTO locations (location_code, location_name, longitude, latitude) VALUES (%s, %s, %s, %s)"
     values = ('LHR', 'Lahore', data['coord']['lon'], data['coord']['lat'])
     insert_into_db(query, values)
 
+    # Insert air quality data
+    aqi_uuid = str(uuid.uuid4())
     query = "INSERT INTO air_quality (aqi_uuid, location_code, aqi_value, measured_at) VALUES (%s, %s, %s, %s)"
-    values = (str(uuid.uuid4()), 'LHR', data['list'][0]['main']['aqi'], timestamp)
+    values = (aqi_uuid, 'LHR', data['list'][0]['main']['aqi'], timestamp)
     insert_into_db(query, values)
+
+    # Insert concentrations
+    components_data = data['list'][0]['components']
+    for component, value in components_data.items():
+        concentration_id = str(uuid.uuid4())
+        query = "INSERT INTO concentrations (concentration_id, aqi_id, component_id, value) VALUES (%s, %s, %s, %s)"
+        values = (concentration_id, aqi_uuid, component, value)
+        insert_into_db(query, values)
 
 
 if __name__ == "__main__":
