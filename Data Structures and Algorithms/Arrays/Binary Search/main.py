@@ -1,13 +1,20 @@
-def binary_search(list, key):
-    low = 0
-    high = len(list) - 1
+from typing import List
 
-    while(low <= high):
+def binary_search(values: List[int], key: int) -> int:
+    """
+    Performs a binary search for the given key in the sorted list.
+    If key is found, returns its index.
+    If key is not found, returns the indices where the key should be inserted (low and high).
+    """
+    low = 0
+    high = len(values) - 1
+
+    while low <= high:
         mid = (low + high) // 2
 
-        if(list[mid] == key):
+        if values[mid] == key:
             return mid
-        elif(list[mid]>key):
+        elif values[mid] > key:
             high = mid - 1
         else:
             low = mid + 1

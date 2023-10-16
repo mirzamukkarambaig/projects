@@ -1,5 +1,3 @@
-from typing import List
-
 from typing import List, Tuple
 
 def binary_search(values: List[int], key: int) -> Tuple[int, int]:
