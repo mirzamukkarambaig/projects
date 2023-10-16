@@ -13,18 +13,15 @@ def binary_search(list, key):
             low = mid + 1
 
     return low, high
-
-def round(list: list, key, mode: str = 'ceil') -> int:
-    low, high = binary_search(list, key)
     
-    if mode == 'ceil':
-        return list[low]
-    elif mode == 'floor':
-        return list[high]
-    else:
-        raise ValueError("Invalid mode. Choose 'ceil' or 'floor'.")
+def ceil(list: list, key) -> int:
+    low, high = binary_search(list, key)
+    return list[low]
 
+def floor(list: list, key) -> int:
+    low, high = binary_search(list, key)
+    return list[high]
 
 
 array = [1, 2, 8, 10, 10, 12, 19]
-print(round(array, 9, 'floor'))
+print(floor(array, 9))
