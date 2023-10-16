@@ -14,7 +14,7 @@ def binary_search(list, key):
 
     return low, high
 
-def ceil_floor(list: list, key, mode: bool = True) -> int:
+def round(list: list, key, mode: bool = True) -> int:
     # True -> Ceil, False -> floor
     low, high = binary_search(list, key)
     
@@ -25,4 +25,4 @@ def ceil_floor(list: list, key, mode: bool = True) -> int:
 
 
 array = [1, 2, 8, 10, 10, 12, 19]
-print(ceil_floor(array, 9, False))
+print(round(array, 9, False))
