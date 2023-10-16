@@ -1,16 +1,16 @@
 def binary_search(list, key):
-    start = 0
-    end = len(list) - 1
+    low = 0
+    high = len(list) - 1
 
-    while(start <= end):
-        mid = (start + end) // 2
+    while(low <= high):
+        mid = (low + high) // 2
 
         if(list[mid] == key):
             return mid
         elif(list[mid]>key):
-            end = mid - 1
+            high = mid - 1
         else:
-            start = mid + 1
+            low = mid + 1
 
     return -1
 
