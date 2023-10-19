@@ -35,12 +35,24 @@ class Linkedlist:
         while(current is not None):
             nextptr = current.next
             current.next = previous
-
             previous = current
             current = nextptr
 
+        self.tail = self.head
         self.head = previous
         
+    def recursive_reverse(self):
+        self.tail = self.head
+        self._recursive_reverse_helper(self.head)
+        
+    def _recursive_reverse_helper(self, node, prev=None):
+        if not node:
+            self.head = prev
+            return
+        next_node = node.next
+        node.next = prev
+        self._recursive_reverse_helper(next_node, node)
+
 linkedlist = Linkedlist()
 
 linkedlist.append(1)
@@ -48,8 +60,8 @@ linkedlist.append("Mukkaram")
 linkedlist.append(56.21)
 linkedlist.append(True)
 
-linkedlist.print_list()
+linkedlist.print_list()  # 1 -> Mukkaram -> 56.21 -> True -> None
 
-linkedlist.reverse()
+linkedlist.recursive_reverse()
 
-linkedlist.print_list()
+linkedlist.print_list()  # True -> 56.21 -> Mukkaram -> 1 -> None
