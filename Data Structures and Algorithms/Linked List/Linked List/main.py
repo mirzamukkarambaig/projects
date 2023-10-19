@@ -26,6 +26,20 @@ class Linkedlist:
             print(cur_node.data, end=" -> ")
             cur_node = cur_node.next
         print("None")
+
+    def iterative_reverse(self):
+        previous = None
+        current = self.head
+        nextptr = None
+
+        while(current is not None):
+            nextptr = current.next
+            current.next = previous
+
+            previous = current
+            current = nextptr
+
+        self.head = previous
         
 linkedlist = Linkedlist()
 
@@ -33,5 +47,9 @@ linkedlist.append(1)
 linkedlist.append("Mukkaram")
 linkedlist.append(56.21)
 linkedlist.append(True)
+
+linkedlist.print_list()
+
+linkedlist.reverse()
 
 linkedlist.print_list()
