@@ -71,20 +71,3 @@ class Linkedlist:
             if temp.next == self.tail:
                 self.tail = temp  
             temp.next = temp.next.next
-
-
-
-
-list = Linkedlist()
-
-print(list.delete_last())
-print(list.delete_first())
-
-list.append(1)
-list.append("Testing")
-list.append(2.6)
-list.append(False)
-
-list.delete_at_position(1)
-
-list.print_list()
