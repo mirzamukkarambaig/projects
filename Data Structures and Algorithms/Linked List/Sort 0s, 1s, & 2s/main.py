@@ -104,14 +104,10 @@ class Linkedlist:
         temp = self.head
 
         while temp is not None:
-            if temp.data == 0:
-                count[0] += 1
-            elif temp.data == 1:
-                count[1] += 1
-            else:
-                count[2] += 1
-            
+            if 0 <= temp.data <= 2:  
+                count[temp.data] += 1
             temp = temp.next
+
 
         i = 0
         temp = self.head
