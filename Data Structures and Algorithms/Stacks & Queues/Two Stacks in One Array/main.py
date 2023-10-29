@@ -38,20 +38,3 @@ class TwoStacks:
 
     def print(self) -> None:
         print(self.array)
-
-
-two_stack = TwoStacks(6)
-
-two_stack.print()
-
-two_stack.push1(1)
-
-two_stack.print()
-
-two_stack.push2(100)
-
-two_stack.print()
-
-two_stack.pop1()
-
-two_stack.print()
