@@ -13,13 +13,13 @@ def evaluate_operator(operator, operand1, operand2):
     return mapping[operator](operand1, operand2)
 
 
-def prefix_evaluation(expression: str) -> int:
+def postfix_evaluation(expression: str) -> int:
     stack = []
 
     # Splitting the string by whitespace to handle multi-digit numbers and operators
     tokens = expression.split()
 
-    for token in reversed(tokens):
+    for token in tokens:
         if token.isdigit():  # Using isdigit() to check for numbers
             stack.append(int(token))
         else:
@@ -27,8 +27,8 @@ def prefix_evaluation(expression: str) -> int:
             if len(stack) < 2:
                 raise ValueError(f"Invalid prefix expression: insufficient operands for operator {token}")
 
-            operand1 = stack.pop()
             operand2 = stack.pop()
+            operand1 = stack.pop()
 
             result = evaluate_operator(token, operand1, operand2)
             stack.append(result)
@@ -39,4 +39,4 @@ def prefix_evaluation(expression: str) -> int:
     
     return stack.pop()
 
-print(prefix_evaluation("+ - 3 2 * 4 5"))
+print(postfix_evaluation("4 5 * 3 2 - +"))
