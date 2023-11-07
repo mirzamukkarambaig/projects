@@ -1,7 +1,7 @@
 # config.py
 DB_CONFIG = {
     'user': 'root',
-    'password': '*csy!@FPT6o5HT8Q#2',
+    'password': '',
     'host': 'localhost',
     'database': 'AirQualityDB',
     'raise_on_warnings': True
